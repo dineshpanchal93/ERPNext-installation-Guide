@@ -154,6 +154,10 @@ before next step and You must login.
 
     bench init frappe-bench --frappe-branch version-13
     
+#### If gives error on frappe-bench install manually cron in ubuntu.
+    sudo apt-get install cron
+    sudo /etc/init.d/cron restart
+    
     cd frappe-bench/
     bench start
     
