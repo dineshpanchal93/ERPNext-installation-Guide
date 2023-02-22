@@ -267,5 +267,17 @@ before next step and You must login.
       sudo service supervisor status
       sudo service redis status
       sudo service nginx status
+      
+### if getting error in production
     
+chmod -R o+rx /home/frappe
+
+and
+
+sudo nano /etc/supervisor/supervisord.conf
+
+(Add these lines under [unix_http_server])
+
+chmod=0760
+chown=frappe:frappe
     
