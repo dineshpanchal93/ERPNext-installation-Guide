@@ -280,4 +280,6 @@ sudo nano /etc/supervisor/supervisord.conf
 
 chmod=0760
 chown=frappe:frappe
+
+sudo -A systemctl restart supervisor
     
