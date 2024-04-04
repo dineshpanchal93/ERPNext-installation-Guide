@@ -281,6 +281,13 @@ sudo nano /etc/supervisor/supervisord.conf
 chmod=0760
 chown=frappe:frappe
 
+
+sudo nano /etc/apt/sources.list
+add deb http://security.ubuntu.com/ubuntu bionic-security main
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3B4FE6ACC0B21F32
+sudo apt update && apt-cache policy libssl1.0-dev
+sudo apt-get install libssl1.0-dev
+
 sudo -A systemctl restart supervisor
 
 
