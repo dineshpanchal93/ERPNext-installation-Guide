@@ -297,3 +297,111 @@ cd ~
 wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.3/wkhtmltox-0.12.3_linux-generic-amd64.tar.xz
 tar vxf wkhtmltox-0.12.3_linux-generic-amd64.tar.xz 
 cp wkhtmltox/bin/wk* /usr/local/bin/
+
+
+
+
+SSL SETUP MULTIPLE
+
+
+
+Adding another site on same instance - ERPNext and Frappe Version14
+This is a continuation of ( https://cloud.erpgulf.com/blog/support-forum/installing-erpnext-version-14-on-ubuntu-22+ ) and part of a series. The explanation can be seen on Youtube.com/ERPGulf
+
+September 18, 2022 · 1 min read
+Free Number 2 Cliparts, Download Free Number 2 Cliparts png images, Free  ClipArts on Clipart Library
+
+
+
+﻿
+
+This blog is a continuation of the following and part of a Six part training series. Watch all on Youtube.com/ERPGulf
+
+
+
+https://erpgulf.com/blog/support-forum/letsencrypt-on-ubuntu-version-20-for-erpnext
+
+
+
+Here we are adding another ERPNext site on the same installation.
+
+
+
+First create second site on ERPNext folder
+
+
+
+
+bench new-site site2.erpgulf.com
+
+bench --site site2.erpgulf.com install-app erpnext 
+
+
+
+
+
+Create letsencrypt SSL cerficate for the second site
+
+sudo certbot certonly -a nginx -d site2.erpgulf.com
+
+
+
+Then configure nginx
+
+
+
+cd /etc/nginx/conf.d
+
+cp frappe-bench.conf site2.erpgulf.com.conf
+
+vim site2.erpgulf.com.conf
+
+
+
+and comment the following lines on the above file.
+
+#upstream frappe-bench-frappe {
+
+#   server 127.0.0.1:8000 fail_timeout=0;
+
+#}
+
+
+
+#upstream frappe-bench-socketio-server {
+
+#   server 127.0.0.1:9000 fail_timeout=0;
+
+#}
+
+
+
+Also on the same file , Change listening TCP port if required 
+
+listen 4423 ssl;
+
+
+
+
+
+and change the first site name to the second where ever in that configuration file.
+
+
+
+
+
+
+
+Restart supervisor and nginx
+
+sudo service supervisor restart
+
+sudo service nginx restart
+
+
+
+You can now access the second site on browser, https://site2.erpgulf.com
+
+
+
+This should work. For any clarification send email to support@ERPGulf.com
