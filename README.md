@@ -400,6 +400,67 @@ sudo service nginx restart
 
 
 
+
+
+
+
+
+
+
+
+
+FOR WKHTMLTOPDF
+
+
+Absolutely! Hereʼs a precise, ready-to-save final step-by-step guide for installing
+wkhtmltopdf (patched Qt)for Frappe/ERPNext on Ubuntu 22.04 (Jammy Jellyfish):
+sudo apt-get remove --purge wkhtmltopdf
+wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2.24_am
+sudo dpkg -i libssl1.1_1.1.1f-1ubuntu2.24_amd64.deb
+# If errors, fix:
+sudo apt --fix-broken install
+sudo dpkg -i libssl1.1_1.1.1f-1ubuntu2.24_amd64.deb
+sudo apt-get install -y xvfb libfontconfig1 libxrender1 libxext6
+wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12
+sudo apt install ./wkhtmltox_0.12.6.1-2.jammy_amd64.deb
+# If errors, fix:
+sudo apt --fix-broken install
+sudo apt install ./wkhtmltox_0.12.6.1-2.jammy_amd64.deb
+give me final steps now so i can write in my note
+ERPNext/Frappe: Installing Patched wkhtmltopdf on Ubuntu 22.04 (Jammy)
+1. Remove any old wkhtmltopdf
+2. Install libssl1.1 Manually
+3. Install other dependencies
+4. Download the patched wkhtmltopdf for Jammy
+5. Install wkhtmltopdf
+wkhtmltopdf --version
+# Output should say: wkhtmltopdf 0.12.6 (with patched qt)
+sudo ln -s /usr/local/bin/wkhtmltopdf /usr/bin/wkhtmltopdf
+sudo ln -s /usr/local/bin/wkhtmltoimage /usr/bin/wkhtmltoimage
+echo "<h1>Hello</h1>" > test.html
+wkhtmltopdf test.html test.pdf
+# View test.pdf to check output
+# For Supervisor
+sudo supervisorctl restart all
+# Or, for bench
+cd /path/to/frappe-bench
+bench restart
+Done!
+Your ERPNext/Frappe is now ready for reliable PDF export using the official patched
+wkhtmltopdf.
+You can copy/paste this checklist directly in your notes. If you ever need troubleshooting,
+revisit these steps!
+6. Confirm installation
+7. (Optional) If wkhtmltopdf not found, create symlink:
+8. Test PDF Rendering (optional)
+9. Restart Frappe/ERPNext services
+10. Test PDF Export in ERPNext
+Go to any Print Preview, click “PDF”, check result.
+
+
+
+
+
 You can now access the second site on browser, https://site2.erpgulf.com
 
 
