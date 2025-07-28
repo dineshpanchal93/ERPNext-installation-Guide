@@ -458,6 +458,30 @@ revisit these steps!
 Go to any Print Preview, click “PDF”, check result.
 
 
+✅ To fix this:
+Install Certbot and its Nginx plugin using these steps:
+
+Step 1: Update your package list
+
+sudo apt update
+
+
+Step 2: Install Certbot and the Nginx plugin
+
+
+sudo apt install certbot python3-certbot-nginx -y
+
+
+Step 3: Verify Certbot is installed
+
+
+certbot --version
+
+
+sudo -H bench setup lets-encrypt dmplv15.addon-s.in
+
+
+
 
 
 
